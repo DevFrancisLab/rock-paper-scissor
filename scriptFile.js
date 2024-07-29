@@ -1,7 +1,4 @@
-/*function calcComputerRandom() {
-	return Math.floor(Math.random()*3);
-}*/
-
+//Function to generate computer choice
 function getComputerChoice() {
 	let randomNumber = Math.floor(Math.random()*3);
 
@@ -17,68 +14,83 @@ function getComputerChoice() {
 	}
 }
 
+//Function to 
 function getHumanChoice() {
-	let choice = prompt("What's your chice?");
+
+let choice =  prompt(`Welcome to Man vs Computer Competition.
+	Let's see who is Superior... Select your choice:
+	1.Rock  2.Paper  3.Scissors
+	Enter your choice e.g Paper:`)
 	return choice.toLowerCase();
+
+
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
+//Function to play one round
 function playRound(humanChoice, computerChoice) {
 	if (humanChoice == "rock") {
 	   if (computerChoice == "scissors") {
-		   console.log("You win! Rock beats Scissors");
+		   console.log("You win! Rock beats Scissors (Computer Loses)");
 		   humanScore++;
-		   console.log("You: " + humanScore);
+		   console.log(`You: ${humanScore}   Computer: ${computerScore}`);
 	   } else if (computerChoice == "paper") {
-		   console.log("You lose! Paper beats Rock");
+		   console.log("You lose! Paper beats Rock (Computer Wins)");
 		   computerScore++;
-		   console.log("Computer: " + computerScore);
+		   console.log(`Computer: ${computerScore}   You: ${humanScore}`);
 	   } else {
-		   console.log("It's a draw!");
+		   console.log("It's a draw! None is Added a Score!");
 	   }
 	} else if (humanChoice == "paper") {
 		   if (computerChoice == "rock") {
-			   console.log("You win! Paper beats Rock");
+			   console.log("You win! Paper beats Rock (Computer Loses)");
 			   humanScore++;
-			   console.log("You: " + humanScore);
+			   console.log(`You:${humanScore}   Computer: ${computerScore}`);
 		   } else if (computerChoice == "scissors") {
-			   console.log("You lose! Scissors beats Paper");
+			   console.log("You lose! Scissors beats Paper (Computer Wins)");
 			   computerScore++;
-			   console.log("Computer: " + computerScore);
+			   console.log(`Computer: ${computerScore}   You: ${humanScore}`);
 		   } else {
-			   console.log("It's a draw!");
+			   console.log("It's a draw! None is Added a Score!");
 		   }
 	} else if (humanChoice == "scissors") {
 		   if (computerChoice == "paper") {
-			   console.log("You win! Scissors beats Paper");
+			   console.log("You win! Scissors beats Paper (Computer Loses)");
 			   humanScore++;
-			   console.log("You: " + humanScore);
+			   console.log(`You: ${humanScore}   Computer: ${computer}`);
 		   } else if (computerChoice == "rock") {
-			   console.log("You lose! Rock beats Scissors");
+			   console.log("You lose! Rock beats Scissors (Computer Wins");
 			   computerScore++;
-			   console.log("Computer: " + computerScore);
+			   console.log(`Computer: ${computerScore}   You: ${humanScore}`);
 		   } else {
-		   console.log("It's a draw!");
+		   console.log("It's a draw! None is Added a Scor!");
 		   }
 	} else {
-		console.log(`Invalid Choice! Please enter "rock", "paper" or "scissors"`);
+		alert(`Invalid Choice! Please enter "rock", "paper" or "scissors"`);
+		//playGame();
 	}
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-//playRound(humanSelection, computerSelection);
-
+//Function to play game five rounds
 function playGame() {
-	for (let counter = 0; counter < 5; counter++) {
-	playRound(humanSelection, computerSelection);
+	for(let i=0; i<5; i++) {
+		const computerSelection = getComputerChoice();
+		const humanSelection = getHumanChoice();
+		console.log(playRound(humanSelection, computerSelection));
 	}
 
-	console.log("Your New Score: " + humanScore);
-	console.log("Computer New Score: " + computerScore);
+	if (humanScore > computerScore) {
+		alert(`Hurray! Congratulations! You've Won!
+      You: ${humanScore}     Computer: ${computerScore}`);
+	} else if (humanScore < computerScore) {
+		alert(`Aw! You've Lost!
+      You: ${humanScore}     Computer: ${computerScore}`);
+	} else {
+		alert(`Ok! It's a Draw!
+      You: ${humanScore}     Computer: ${computerScore}`);
+	}
 }
 
 playGame();
